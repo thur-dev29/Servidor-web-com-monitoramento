@@ -96,7 +96,6 @@ ssh -i "caminho/para/sua-chave.pem" admin@seu-ip-publico
 
 ---
 
-## Conclusão
 Agora você configurou uma **VPC na AWS** com **sub-redes públicas e privadas**, criou um **Internet Gateway** e configurou uma **instância EC2** acessível via SSH.
 
 # Etapa 2 - Configuração do Servidor Web
