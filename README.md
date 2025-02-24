@@ -1,6 +1,6 @@
 # Projeto com a finalidade de desenvolver e testar habilidades em Linux, AWS e automação de processos através da configuração de um ambiente  de servidor web monitorado.
 
-#Etapa 1 - Configurando uma VPC na AWS com Sub-redes Públicas e Privadas
+# Etapa 1 - Configurando uma VPC na AWS com Sub-redes Públicas e Privadas
 
 Este documento descreve o processo de criação de uma **VPC na AWS** com **2 sub-redes públicas**, **2 sub-redes privadas** e um **Internet Gateway** para conectar as sub-redes públicas à Internet. Além disso, abordamos a criação de uma **instância EC2** e seu acesso via SSH.
 
