@@ -2,7 +2,7 @@
 
 # Etapa 1 - Configurando uma VPC na AWS com Sub-redes Públicas e Privadas
 
-Essa parte do documento descreve o processo de criação de uma **VPC na AWS** com **2 sub-redes públicas**, **2 sub-redes privadas** e um **Internet Gateway** para conectar as sub-redes públicas à Internet. Além disso, abordamos a criação de uma **instância EC2** e seu acesso via SSH.
+A etapa 1 descreve o processo de criação de uma **VPC na AWS** com **2 sub-redes públicas**, **2 sub-redes privadas** e um **Internet Gateway** para conectar as sub-redes públicas à Internet. Além disso, abordamos a criação de uma **instância EC2** e seu acesso via SSH.
 
 ## 1. Criando a VPC
 1. Acesse sua conta AWS e procure pelo serviço **VPC**.
@@ -101,9 +101,9 @@ Agora você configurou uma **VPC na AWS** com **sub-redes públicas e privadas**
 
 # Etapa 2 - Configuração do Servidor Web
 
-Esta documentação descreve o processo de instalação e configuração do Nginx em uma instância EC2 na AWS.
+A etapa 2 descreve o processo de configuração de um servidor web em uma instância EC2 na AWS.
 
-## 1. Instalando o Nginx na EC2
+## 1. Instalando o Nginx
 
 Agora que está conectado via SSH à sua instância, execute os seguintes comandos:
 
