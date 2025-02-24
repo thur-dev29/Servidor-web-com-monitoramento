@@ -217,3 +217,167 @@ sudo systemctl restart nginx
 ```
 
 Este comando reinicia o serviço do Nginx. Quando você reinicia o Nginx, ele para o serviço em execução e o inicia novamente. Isso é útil para aplicar alterações de configuração ou para resolver problemas com o serviço.
+
+# Etapa 3 - Monitoramento e Notificações
+
+## Criando um Bot no Telegram
+
+1. Abra o Telegram e procure pelo usuário `@BotFather`.
+2. Inicie uma conversa e digite o comando:
+   ```
+   /newbot
+   ```
+3. Siga as instruções:
+   - Escolha um nome para o bot.
+   - Escolha um username (deve terminar com `bot`).
+4. O `BotFather` fornecerá um Token, guarde-o. O formato será:
+   ```
+   1234567890:ABCDEFGHIJKLMNOPQRSTUVWXYZabcdef
+   ```
+5. Obtenha o Chat ID:
+   - Procure `@userinfobot` no Telegram.
+   - Envie qualquer mensagem, ele responderá com o seu ID.
+   - Anote esse número, pois ele será usado no script.
+6. Volte para a conversa com `BotFather` e clique no link fornecido para acessar seu bot.
+7. Envie o comando:
+   ```
+   /start
+   ```
+
+## Instalando as Dependências Necessárias
+
+Execute o seguinte comando na instância EC2 para instalar as dependências:
+```bash
+sudo apt install -y python3 python3-requests python3-python-telegram-bot
+```
+
+## Criando o Script de Monitoramento
+
+Crie o arquivo do script:
+```bash
+sudo nano /usr/local/bin/monitoramento.py
+```
+
+Adicione o seguinte código:
+```python
+import requests
+import logging
+from telegram import Bot
+from datetime import datetime
+
+# Configuração do logging
+logging.basicConfig(filename='/var/log/monitoramento.log',
+                    level=logging.INFO,
+                    format='%(asctime)s - %(message)s')
+
+# Defina o seu bot do Telegram e o chat ID
+TELEGRAM_API_TOKEN = 'seu_token_aqui'
+CHAT_ID = 'seu_chat_id_aqui'
+
+# URL do site a ser monitorado
+URL = 'http://seu-site-aqui.com'
+
+# Função para enviar notificação no Telegram
+def send_telegram_message(message):
+    bot = Bot(token=TELEGRAM_API_TOKEN)
+    bot.send_message(chat_id=CHAT_ID, text=message)
+
+# Função para verificar a disponibilidade do site
+def check_site():
+    try:
+        response = requests.get(URL)
+        if response.status_code == 200:
+            logging.info(f"Site {URL} está disponível")
+        else:
+            logging.error(f"Site {URL} retornou código {response.status_code}")
+            send_telegram_message(f"ALERTA! O site {URL} não está disponível. Código de resposta: {response.status_code}")
+    except requests.RequestException as e:
+        logging.error(f"Erro ao acessar o site {URL}: {e}")
+        send_telegram_message(f"ALERTA! O site {URL} não está acessível. Erro: {e}")
+
+if __name__ == "__main__":
+    check_site()
+```
+
+Substitua:
+- `'seu_token_aqui'` pelo Token fornecido pelo `@BotFather`.
+- `'seu_chat_id_aqui'` pelo Chat ID fornecido pelo `@userinfobot`.
+- `'http://seu-site-aqui.com'` pela URL do site que deseja monitorar.
+
+## Configurar Permissões e Dependências
+
+O script precisa de permissões adequadas para escrever no log:
+```bash
+sudo touch /var/log/monitoramento.log
+sudo chown root:root /var/log/monitoramento.log
+sudo chmod 664 /var/log/monitoramento.log
+```
+
+## Configurar o `systemd` para Rodar o Script Automaticamente
+
+Crie o arquivo de timer para executar o script a cada 30 segundos:
+```bash
+sudo nano /etc/systemd/system/monitoramento.timer
+```
+
+Adicione o seguinte conteúdo:
+```ini
+[Unit]
+Description=Monitoramento de disponibilidade do site
+
+[Timer]
+OnBootSec=10s
+OnUnitActiveSec=30s
+Unit=monitoramento.service
+
+[Install]
+WantedBy=timers.target
+```
+
+Agora, crie o serviço `systemd` para o script:
+```bash
+sudo nano /etc/systemd/system/monitoramento.service
+```
+
+Adicione o seguinte conteúdo:
+```ini
+[Unit]
+Description=Monitoramento do site
+
+[Service]
+ExecStart=/usr/bin/python3 /usr/local/bin/monitoramento.py
+StandardOutput=journal
+StandardError=journal
+```
+
+## Habilitar e Iniciar o Timer
+
+Ative e inicie o timer:
+```bash
+sudo systemctl daemon-reload
+sudo systemctl enable monitoramento.timer
+sudo systemctl start monitoramento.timer
+```
+
+## Verificar se o Timer Está Funcionando
+
+Para verificar se o timer está ativo e rodando o script:
+```bash
+sudo systemctl status monitoramento.timer
+```
+
+## Testar o Script
+
+Execute manualmente para testar:
+```bash
+sudo systemctl start monitoramento.service
+```
+
+Verifique o log:
+```bash
+tail -f /var/log/monitoramento.log
+```
+
+Se tudo estiver correto, o script estará monitorando a disponibilidade do site e enviando alertas para o Telegram em caso de falha.
+
+
