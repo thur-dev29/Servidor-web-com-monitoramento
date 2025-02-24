@@ -99,3 +99,110 @@ ssh -i "caminho/para/sua-chave.pem" admin@seu-ip-publico
 ## Conclusão
 Agora você configurou uma **VPC na AWS** com **sub-redes públicas e privadas**, criou um **Internet Gateway** e configurou uma **instância EC2** acessível via SSH.
 
+# Configuração do Servidor Web
+
+Esta documentação descreve o processo de instalação e configuração do Nginx em uma instância EC2 na AWS.
+
+## 1. Instalando o Nginx na EC2
+
+Agora que está conectado via SSH à sua instância, execute os seguintes comandos:
+
+```bash
+sudo apt update && sudo apt install -y nginx
+```
+
+Isso irá baixar e instalar o Nginx.
+
+### O que é o Nginx?
+O **Nginx** é um servidor web leve e eficiente, usado para hospedar sites, fazer balanceamento de carga e funcionar como proxy reverso. Ele é conhecido por sua alta performance, baixo consumo de recursos e capacidade de lidar com milhares de conexões simultâneas. Além disso, é muito usado para melhorar a segurança e otimizar o tráfego em aplicações web.
+
+Após a instalação, verifique se o serviço está rodando:
+
+```bash
+sudo systemctl status nginx
+```
+
+Se aparecer **"active (running)"**, o Nginx está funcionando. Caso precise iniciar o serviço manualmente, use:
+
+```bash
+sudo systemctl start nginx
+```
+
+## 2. Criando uma Página HTML
+Agora é preciso criar uma página HTML para poder exibir no navegador.
+
+Acesse o diretório padrão do Nginx:
+
+```bash
+cd /var/www/html
+```
+
+Crie um arquivo HTML:
+
+```bash
+sudo nano index.html
+```
+
+Adicione algum conteúdo ao arquivo, depois salve e saia do editor (**Ctrl + X**, depois **Y** e **Enter**).
+
+## 3. Configurar o Nginx para Servir a Página
+
+Reinicie o Nginx para carregar as mudanças:
+
+```bash
+sudo systemctl restart nginx
+```
+
+Verifique se o serviço está rodando corretamente:
+
+```bash
+sudo systemctl status nginx
+```
+
+Agora, teste no navegador. Pegue o **IP Público** da sua instância e acesse no navegador:
+
+```
+http://SEU_IP_PUBLICO
+```
+
+Se estiver tudo certo, a página será exibida.
+
+## 4. Criar um Serviço systemd para Garantir que o Nginx Reinicie Automaticamente
+
+O Nginx já vem configurado para iniciar automaticamente, mas vamos garantir que ele reinicie caso falhe.
+
+Ative o Nginx para iniciar com o sistema:
+
+```bash
+sudo systemctl enable nginx
+```
+
+Se quiser garantir que o Nginx reinicie automaticamente em caso de falha, crie ou edite um serviço systemd personalizado:
+
+```bash
+sudo nano /etc/systemd/system/nginx.service
+```
+
+Adicione ou edite estas linhas:
+
+```
+[Unit]
+Description=Nginx Web Server
+After=network.target
+
+[Service]
+ExecStart=/usr/sbin/nginx -g 'daemon off;'
+Restart=Always
+RestartSec=5s
+
+[Install]
+WantedBy=multi-user.target
+```
+
+Salve (**Ctrl + X**, depois **Y** e **Enter**) e ative o novo serviço:
+
+```bash
+sudo systemctl daemon-reload
+sudo systemctl restart nginx
+```
+
