@@ -1,4 +1,4 @@
-# Projeto com a finalidade de desenvolver e testar habilidades em Linux, AWS e automação de processos através da configuração de um ambiente  de servidor web monitorado.
+# Projeto com a finalidade de desenvolver e testar habilidades em Linux, AWS, automação de processos e configuração de um ambiente de servidor web monitorado.
 
 # Etapa 1 - Configurando uma VPC na AWS com Sub-redes Públicas e Privadas
 
