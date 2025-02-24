@@ -101,17 +101,15 @@ ssh -i "caminho/para/sua-chave.pem" admin@seu-ip-publico
 
 Agora você configurou uma **VPC na AWS** com **sub-redes públicas e privadas**, criou um **Internet Gateway** e configurou uma **instância EC2** acessível via SSH.
 
-![VPC](https://github.com/user-attachments/assets/c3a1f194-6f57-4635-9b3d-9c349526bccc)
+![VPC](https://github.com/user-attachments/assets/a0cb81d3-c198-4481-b033-2e32dcd4f3d5)
 
-![Sub-redes](https://github.com/user-attachments/assets/400545c9-ce05-4ba2-b1c1-f93c7b07157d)
+![Sub-redes](https://github.com/user-attachments/assets/e4cdbfd0-ca74-4318-88b3-f778ec8e49a9)
 
-![Rotas](https://github.com/user-attachments/assets/90b4d226-5db4-4211-882e-a6669aad54a9)
+![Rotas](https://github.com/user-attachments/assets/596a5337-6bda-488a-863f-5b9ba963361b)
 
-![Gateways da internet](https://github.com/user-attachments/assets/cba027c9-8943-48f0-b0cc-2b5a7be29b37)
+![Gateways da internet](https://github.com/user-attachments/assets/e4658945-2fb3-4604-b756-4b479953f88d)
 
-![Instâncias](https://github.com/user-attachments/assets/048e0445-66fe-4eb3-a32e-a3719efbb344)
-
-![Terminal](https://github.com/user-attachments/assets/80e7b494-03c7-4405-8dee-8b616463aa89)
+![Instâncias](https://github.com/user-attachments/assets/adf58df2-d2fe-4f12-ac4a-931455649ace)
 
 # Etapa 2 - Configuração do Servidor Web
 
