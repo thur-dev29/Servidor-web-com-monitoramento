@@ -1,3 +1,6 @@
+
+
+
 # Projeto com a finalidade de desenvolver e testar habilidades em Linux, AWS, automação de processos e configuração de um ambiente de servidor web monitorado.
 
 # Etapa 1 - Configurando uma VPC na AWS com Sub-redes Públicas e Privadas
@@ -98,6 +101,18 @@ ssh -i "caminho/para/sua-chave.pem" admin@seu-ip-publico
 
 Agora você configurou uma **VPC na AWS** com **sub-redes públicas e privadas**, criou um **Internet Gateway** e configurou uma **instância EC2** acessível via SSH.
 
+![VPC](https://github.com/user-attachments/assets/c3a1f194-6f57-4635-9b3d-9c349526bccc)
+
+![Sub-redes](https://github.com/user-attachments/assets/400545c9-ce05-4ba2-b1c1-f93c7b07157d)
+
+![Rotas](https://github.com/user-attachments/assets/90b4d226-5db4-4211-882e-a6669aad54a9)
+
+![Gateways da internet](https://github.com/user-attachments/assets/cba027c9-8943-48f0-b0cc-2b5a7be29b37)
+
+![Instâncias](https://github.com/user-attachments/assets/048e0445-66fe-4eb3-a32e-a3719efbb344)
+
+![Terminal](https://github.com/user-attachments/assets/80e7b494-03c7-4405-8dee-8b616463aa89)
+
 # Etapa 2 - Configuração do Servidor Web
 
 A etapa 2 descreve o processo de configuração de um servidor web em uma instância EC2 na AWS.
@@ -143,6 +158,9 @@ sudo nano index.html
 ```
 
 Adicione algum conteúdo ao arquivo, depois salve e saia do editor (**Ctrl + X**, depois **Y** e **Enter**).
+
+![site](https://github.com/user-attachments/assets/e77d5c7f-1436-4793-9e68-823360b95a3a)
+
 
 ## 3. Configurar o Nginx para Servir a Página
 
@@ -379,4 +397,8 @@ tail -f /var/log/monitoramento.log
 
 Se tudo estiver correto, o script estará monitorando a disponibilidade do site e enviando alertas para o Telegram em caso de falha.
 
+![Teste - Servidor funcionando](https://github.com/user-attachments/assets/900722a2-29c0-4ece-90ff-1a682d7ccba7)
 
+![Teste - Servidor não funcionando](https://github.com/user-attachments/assets/d9b760e5-e496-4621-83c9-c31f03239736)
+
+![Telegram](https://github.com/user-attachments/assets/1c455a26-1527-4945-95d3-5fd919876c45)
