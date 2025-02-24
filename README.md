@@ -206,3 +206,14 @@ sudo systemctl daemon-reload
 sudo systemctl restart nginx
 ```
 
+```bash
+sudo systemctl daemon-reload
+```
+
+Este comando informa ao sistema para recarregar as definições dos serviços. Isso é útil quando você faz alterações em arquivos de configuração de serviços, o daemon-reload é necessário para que o systemd reconheça essas alterações.
+
+```bash
+sudo systemctl restart nginx
+```
+
+Este comando reinicia o serviço do Nginx. Quando você reinicia o Nginx, ele para o serviço em execução e o inicia novamente. Isso é útil para aplicar alterações de configuração ou para resolver problemas com o serviço.
