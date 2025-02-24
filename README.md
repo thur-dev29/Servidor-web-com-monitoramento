@@ -111,6 +111,9 @@ Agora você configurou uma **VPC na AWS** com **sub-redes públicas e privadas**
 
 ![Instâncias](https://github.com/user-attachments/assets/adf58df2-d2fe-4f12-ac4a-931455649ace)
 
+![Terminal](https://github.com/user-attachments/assets/3709e1dc-84a3-4e91-be04-69926c6141b9)
+
+
 # Etapa 2 - Configuração do Servidor Web
 
 A etapa 2 descreve o processo de configuração de um servidor web em uma instância EC2 na AWS.
