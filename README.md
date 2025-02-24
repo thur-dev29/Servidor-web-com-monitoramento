@@ -220,7 +220,7 @@ Este comando reinicia o serviço do Nginx. Quando você reinicia o Nginx, ele pa
 
 # Etapa 3 - Monitoramento e Notificações
 
-## Criando um Bot no Telegram
+## 1. Criando um Bot no Telegram
 
 1. Abra o Telegram e procure pelo usuário `@BotFather`.
 2. Inicie uma conversa e digite o comando:
@@ -244,14 +244,14 @@ Este comando reinicia o serviço do Nginx. Quando você reinicia o Nginx, ele pa
    /start
    ```
 
-## Instalando as Dependências Necessárias
+## 2. Instalando as Dependências Necessárias
 
 Execute o seguinte comando na instância EC2 para instalar as dependências:
 ```bash
 sudo apt install -y python3 python3-requests python3-python-telegram-bot
 ```
 
-## Criando o Script de Monitoramento
+## 3. Criando o Script de Monitoramento
 
 Crie o arquivo do script:
 ```bash
@@ -304,7 +304,7 @@ Substitua:
 - `'seu_chat_id_aqui'` pelo Chat ID fornecido pelo `@userinfobot`.
 - `'http://seu-site-aqui.com'` pela URL do site que deseja monitorar.
 
-## Configurar Permissões e Dependências
+## 4. Configurar Permissões e Dependências
 
 O script precisa de permissões adequadas para escrever no log:
 ```bash
@@ -313,7 +313,7 @@ sudo chown root:root /var/log/monitoramento.log
 sudo chmod 664 /var/log/monitoramento.log
 ```
 
-## Configurar o `systemd` para Rodar o Script Automaticamente
+## 5. Configurar o `systemd` para Rodar o Script Automaticamente
 
 Crie o arquivo de timer para executar o script a cada 30 segundos:
 ```bash
@@ -350,7 +350,7 @@ StandardOutput=journal
 StandardError=journal
 ```
 
-## Habilitar e Iniciar o Timer
+## 6. Habilitar e Iniciar o Timer
 
 Ative e inicie o timer:
 ```bash
@@ -359,14 +359,14 @@ sudo systemctl enable monitoramento.timer
 sudo systemctl start monitoramento.timer
 ```
 
-## Verificar se o Timer Está Funcionando
+## 7. Verificar se o Timer Está Funcionando
 
 Para verificar se o timer está ativo e rodando o script:
 ```bash
 sudo systemctl status monitoramento.timer
 ```
 
-## Testar o Script
+## 8. Testar o Script
 
 Execute manualmente para testar:
 ```bash
