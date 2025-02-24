@@ -177,13 +177,13 @@ Ative o Nginx para iniciar com o sistema:
 sudo systemctl enable nginx
 ```
 
-Se quiser garantir que o Nginx reinicie automaticamente em caso de falha, crie ou edite um serviço systemd personalizado:
+Para garantir que o Nginx reinicie automaticamente em caso de falha, crie um serviço systemd:
 
 ```bash
 sudo nano /etc/systemd/system/nginx.service
 ```
 
-Adicione ou edite estas linhas:
+Adicione estas linhas:
 
 ```
 [Unit]
