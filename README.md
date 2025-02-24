@@ -334,7 +334,7 @@ Unit=monitoramento.service
 WantedBy=timers.target
 ```
 
-Agora, crie o serviço `systemd` para o script:
+Agora, precisa criar o serviço `systemd` para o script:
 ```bash
 sudo nano /etc/systemd/system/monitoramento.service
 ```
