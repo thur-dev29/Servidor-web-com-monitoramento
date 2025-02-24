@@ -235,11 +235,11 @@ Este comando reinicia o serviço do Nginx. Quando você reinicia o Nginx, ele pa
    1234567890:ABCDEFGHIJKLMNOPQRSTUVWXYZabcdef
    ```
 5. Obtenha o Chat ID:
-   - Procure `@userinfobot` no Telegram.
+   - Procure pelo usuário `@userinfobot` no Telegram.
    - Envie qualquer mensagem, ele responderá com o seu ID.
    - Anote esse número, pois ele será usado no script.
-6. Volte para a conversa com `BotFather` e clique no link fornecido para acessar seu bot.
-7. Envie o comando:
+7. Volte para a conversa com `BotFather` e clique no link fornecido para acessar seu bot.
+8. Envie o comando:
    ```
    /start
    ```
