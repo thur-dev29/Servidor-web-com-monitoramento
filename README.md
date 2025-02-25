@@ -7,6 +7,18 @@
 
 A etapa 1 descreve o processo de criação de uma **VPC na AWS** com **2 sub-redes públicas**, **2 sub-redes privadas** e um **Internet Gateway** para conectar as sub-redes públicas à Internet. Além disso, abordamos a criação de uma **instância EC2** e seu acesso via SSH.
 
+![VPC](https://github.com/user-attachments/assets/a0cb81d3-c198-4481-b033-2e32dcd4f3d5)
+
+![Sub-redes](https://github.com/user-attachments/assets/e4cdbfd0-ca74-4318-88b3-f778ec8e49a9)
+
+![Rotas](https://github.com/user-attachments/assets/596a5337-6bda-488a-863f-5b9ba963361b)
+
+![Gateways da internet](https://github.com/user-attachments/assets/e4658945-2fb3-4604-b756-4b479953f88d)
+
+![Instâncias](https://github.com/user-attachments/assets/adf58df2-d2fe-4f12-ac4a-931455649ace)
+
+![Terminal](https://github.com/user-attachments/assets/3709e1dc-84a3-4e91-be04-69926c6141b9)
+
 ## 1. Criando a VPC
 1. Acesse sua conta AWS e procure pelo serviço **VPC**.
 2. No menu lateral, clique em **Suas VPCs** e depois em **Criar VPC**.
@@ -100,19 +112,6 @@ ssh -i "caminho/para/sua-chave.pem" admin@seu-ip-publico
 ---
 
 Agora você configurou uma **VPC na AWS** com **sub-redes públicas e privadas**, criou um **Internet Gateway** e configurou uma **instância EC2** acessível via SSH.
-
-![VPC](https://github.com/user-attachments/assets/a0cb81d3-c198-4481-b033-2e32dcd4f3d5)
-
-![Sub-redes](https://github.com/user-attachments/assets/e4cdbfd0-ca74-4318-88b3-f778ec8e49a9)
-
-![Rotas](https://github.com/user-attachments/assets/596a5337-6bda-488a-863f-5b9ba963361b)
-
-![Gateways da internet](https://github.com/user-attachments/assets/e4658945-2fb3-4604-b756-4b479953f88d)
-
-![Instâncias](https://github.com/user-attachments/assets/adf58df2-d2fe-4f12-ac4a-931455649ace)
-
-![Terminal](https://github.com/user-attachments/assets/3709e1dc-84a3-4e91-be04-69926c6141b9)
-
 
 # Etapa 2 - Configuração do Servidor Web
 
